@@ -31,7 +31,7 @@ func NewWorkerPool(size int) *WorkerPool {
 }
 
 func (p *WorkerPool) process(msg string, id int) {
-	//time.Sleep(time.Second)
+	time.Sleep(time.Second)
 	fmt.Println(msg, id)
 }
 
