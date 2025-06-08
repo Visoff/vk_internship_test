@@ -1,8 +1,9 @@
-package main
+package workerpool
 
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 type WorkerPool struct {
@@ -22,14 +23,15 @@ func NewWorkerPool(size int) *WorkerPool {
 
 	for i := range size {
 		pool.wg.Add(1)
-		go pool.worker(i)
 		pool.workers[i] = i
+		go pool.worker(i)
 	}
 
 	return pool
 }
 
 func (p *WorkerPool) process(msg string, id int) {
+	//time.Sleep(time.Second)
 	fmt.Println(msg, id)
 }
 
